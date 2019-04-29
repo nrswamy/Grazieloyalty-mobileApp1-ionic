@@ -1,0 +1,75 @@
+<ion-header no-border>
+
+  <ion-navbar>
+    <ion-title>Security PIN</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-grid text-center>
+
+    <ion-row>
+      <ion-col>
+        <h6 ion-text text-center text-uppercase color="light">{{enterText}} PIN</h6>
+        <div text-center margin-vertical>
+          <ion-icon *ngFor="let i of fullBtns" name="radio-button-on" color="light"></ion-icon>
+          <ion-icon *ngFor="let j of emptyBtns" name="radio-button-off" color="light"></ion-icon>
+        </div>
+      </ion-col>
+    </ion-row>.
+    <ion-row>
+      <ion-col>
+        <button ion-button round outline large color="light" (click)="add('1')">1</button>
+      </ion-col>
+      <ion-col>
+        <button ion-button round outline large color="light" (click)="add('2')">2</button>
+      </ion-col>
+      <ion-col>
+        <button ion-button round outline large color="light" (click)="add('3')">3</button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <button ion-button round outline large color="light" (click)="add('4')">4</button>
+      </ion-col>
+      <ion-col>
+        <button ion-button round outline large color="light" (click)="add('5')">5</button>
+      </ion-col>
+      <ion-col>
+        <button ion-button round outline large color="light" (click)="add('6')">6</button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <button ion-button round outline large color="light" (click)="add('7')">7</button>
+      </ion-col>
+      <ion-col>
+        <button ion-button round outline large color="light" (click)="add('8')">8</button>
+      </ion-col>
+      <ion-col>
+        <button ion-button round outline large color="light" (click)="add('9')">9</button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col>
+        <button ion-button round outline large color="light" (click)="add('0')">0</button>
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div style="text-align: center;">
+      <ion-buttons>
+        <button ion-button block (click)="dismmiss()">Cancel</button>
+      </ion-buttons> 
+    </div>
+  </ion-toolbar>
+</ion-footer>

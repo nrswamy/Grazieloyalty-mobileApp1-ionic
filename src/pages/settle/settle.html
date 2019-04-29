@@ -1,0 +1,87 @@
+<!--
+  Generated template for the SettlePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>Settlement</ion-title>	
+	</ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+	<ion-grid>
+		<ion-row text-center>
+			<ion-col col-lg-6 col-xl-6 col-md-6 col-sm-12 col-xs-12>
+				<span>Enter customers mobile number</span>
+				<ion-row text-center>
+					<ion-col>
+						<ion-item no-lines>
+							<ion-input type="tel" [(ngModel)]="mobileNumber" (keyup)="validateMobile()" (click)="changeInput('mobile')" readonly={{isLandscape}} placeholder="Customer Mobile Number:"> </ion-input>
+						</ion-item>
+					</ion-col>
+				</ion-row>
+
+				<ion-row text-center>
+					<ion-col col-6>
+						<span class='first'>User Balance</span>
+						<ion-row text-center>
+							<ion-col col-9>						
+								<ion-item no-lines> 			
+									<ion-input [(ngModel)]="balanceAmount" readonly={{isLandscape}}></ion-input>
+								</ion-item>
+							</ion-col>
+						</ion-row>
+					</ion-col>
+					<ion-col col-6>
+						<span class='first'>Amount Settled</span>
+						<ion-row text-center>
+							<ion-col col-9>						
+								<ion-item no-lines> 			
+									<ion-input [(ngModel)]="settleAmount" (click)="changeInput('settleAmount')" type='number' readonly={{isLandscape}}></ion-input>
+								</ion-item>
+							</ion-col>
+						</ion-row>
+					</ion-col>					
+				</ion-row>
+			</ion-col>
+			<ion-col *ngIf="isLandscape" class="main-wrap">
+				<ion-row class="wrap">
+					<ion-col col-4>	<button ion-button block large color="danger" (click)="addNum('7')">7</button> </ion-col>
+					<ion-col col-4>	<button ion-button block large color="danger" (click)="addNum('8')">8</button> </ion-col>
+					<ion-col col-4>	<button ion-button block large color="danger" (click)="addNum('9')">9</button> </ion-col>
+				</ion-row>
+				<ion-row class="wrap">
+					<ion-col col-4>	<button ion-button block large color="danger" (click)="addNum('4')">4</button> </ion-col>
+					<ion-col col-4>	<button ion-button block large color="danger" (click)="addNum('5')">5</button> </ion-col>
+					<ion-col col-4>	<button ion-button block large color="danger" (click)="addNum('6')">6</button> </ion-col>
+				</ion-row>
+				<ion-row class="wrap">
+					<ion-col col-4>	<button ion-button block large color="danger" (click)="addNum('1')">1</button> </ion-col>
+					<ion-col col-4>	<button ion-button block large color="danger" (click)="addNum('2')">2</button> </ion-col>
+					<ion-col col-4>	<button ion-button block large color="danger" (click)="addNum('3')">3</button> </ion-col>
+				</ion-row>
+				<ion-row class="wrap">
+					<ion-col col-4> <button ion-button block large color="danger" (click)="addNum('.')">.</button> </ion-col>
+					<ion-col col-4> <button ion-button block large color="danger" (click)="addNum('0')">0</button> </ion-col>
+					<ion-col col-4> <button ion-button block large color="danger" (click)="addNum('<')">\<</button> </ion-col>
+				</ion-row>
+			</ion-col>
+		</ion-row>
+
+		<ion-row text-center>
+			<ion-col col-xl-8 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center>
+				<button ion-button block color="danger" (click)="settleCustomer()">
+					Settle
+				</button>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
+</ion-content>

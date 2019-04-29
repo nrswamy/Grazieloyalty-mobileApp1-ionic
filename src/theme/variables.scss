@@ -1,0 +1,128 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/v2/theming/
+$font-path: "../assets/fonts";
+
+@import "ionic.globals";
+
+
+// Shared Variables
+// --------------------------------------------------
+// To customize the look and feel of this app, you can override
+// the Sass variables found in Ionic's source scss files.
+// To view all the possible Ionic variables, see:
+// http://ionicframework.com/docs/v2/theming/overriding-ionic-variables/
+
+
+
+
+// Named Color Variables
+// --------------------------------------------------
+// Named colors makes it easy to reuse colors on various components.
+// It's highly recommended to change the default colors
+// to match your app's branding. Ionic uses a Sass map of
+// colors so you can add, rename and remove colors as needed.
+// The "primary" color is the only required color in the map.
+
+$colors: (
+  primary:    #488aff,
+  secondary:  #32db64,
+  danger:     #f53d3d,
+  light:      #f4f4f4,
+  dark:       #222,
+  gold-color:		  #FFD700,
+  silver-color:     #C0C0C0,
+  bronze-color: #CD7F32,
+  theme-red: #ff6666
+);
+
+
+// App iOS Variables
+// --------------------------------------------------
+// iOS only Sass variables can go here
+
+
+
+
+// App Material Design Variables
+// --------------------------------------------------
+// Material Design only Sass variables can go here
+
+$action-sheet-md-text-align: center !default;
+$action-sheet-md-button-text-color: #00e6e6 !default;
+$action-sheet-md-icon-font-size:	3.8rem !default;
+$action-sheet-md-icon-color: red;
+
+$card-ios-background-color: #FFD4CF;
+$card-md-background-color: #FFD4CF;
+$card-wp-background-color: #FFD4CF;
+
+$toolbar-ios-title-text-color: white;
+$toolbar-md-title-text-color: white;
+$toolbar-wp-title-text-color: white;
+
+$button-disabled: #ffcccc;
+$label-md-text-color: #4d0000;
+$text-input-md-highlight-color: black;
+$text-input-md-show-valid-highlight: false;
+$text-input-md-show-invalid-highlight: false;
+$text-input-md-show-focus-highlight: true;
+$toolbar-md-height: 45px;
+
+$segment-button-md-height: 3rem;
+$segment-button-md-line-height: 2.5rem;
+$toolbar-md-active-color: white;
+$segment-button-md-font-size: 1.5rem;
+
+$segment-button-md-border-color-activated: white;
+$segment-button-md-text-color-activated: white;
+
+
+
+$alert-md-message-text-color: black;
+$alert-md-button-text-color: white;
+$alert-md-radio-label-text-color-checked: #002966;
+$alert-md-button-background-color: #002966;
+$alert-md-button-border-radius: 5px;
+$alert-md-border-radius:5px;
+$alert-md-background-color:#e6f2ff;
+$alert-md-message-font-size: 18px;
+$alert-md-radio-border-color-on: #002966;
+
+$searchbar-md-padding-top: 0px;
+$searchbar-md-input-box-shadow: 0;
+$menu-md-background:transparent;
+$menu-width: 250px;
+
+$item-md-divider-font-size: 1.8rem;
+
+
+// App Windows Variables	
+// --------------------------------------------------
+// Windows only Sass variables can go here
+
+
+
+
+// App Theme
+// --------------------------------------------------
+// Ionic apps can have different themes applied, which can
+// then be future customized. This import comes last
+// so that the above variables are used and Ionic's
+// default are overrien.
+
+@import "ionic.theme.default";
+
+
+// Ionicons
+// --------------------------------------------------
+// The premium icon font for Ionic. For more info, please see:
+// http://ionicframework.com/docs/v2/ionicons/
+
+@import "ionic.ionicons";
+
+
+// Fonts
+// --------------------------------------------------
+
+@import "roboto";
+@import "noto-sans";

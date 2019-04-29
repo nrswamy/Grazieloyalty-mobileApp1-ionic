@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Payment History</ion-title>  
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-grid>
+    <ion-row *ngIf="!payentDetails.length">
+      <ion-col>
+        <span class="noPayments">You have not made any payments yet</span>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-lg-6 col-xl-6 col-md-6 col-sm-12 col-xs-12>
+        <ion-row *ngIf="payentDetails.length" class="item-header">
+          <ion-col col-3 class="item-col">
+            <span>Amount</span>
+          </ion-col>
+          <ion-col col-5 class="item-col">
+           <span>Date of Purchase</span>
+         </ion-col>
+         <ion-col col-4 class="item-col">
+          <span>Status</span>
+        </ion-col>
+      </ion-row>
+
+      <ion-item *ngFor="let payment of payentDetails" no-lines [class.sucitem]="payment.status == successres" [class.failitem]="payment.status == failureres" [class.ukwnitem]="payment.status == unknownres" (click)="showModal(payment)">
+        <ion-row>
+          <ion-col col-3 class="item-col">
+            <span>Rs.{{payment.amount}}</span>
+          </ion-col>
+          <ion-col col-5 class="item-col">
+            <span>{{payment.date}}</span>
+          </ion-col>
+          <ion-col col-4 class="item-col">
+            <span>{{payment.status}}</span>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+</ion-grid>
+</ion-content>

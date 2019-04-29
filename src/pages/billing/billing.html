@@ -1,0 +1,153 @@
+<!--
+Generated template for the BillingPage page.
+
+See http://ionicframework.com/docs/components/#navigation for more info on
+Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Billing</ion-title>	
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+
+  <ion-grid>
+    <ion-row text-center>
+      <ion-col col-lg-6 col-xl-6 col-md-6 col-sm-12 col-xs-12>
+        <form [formGroup]="saleForm">
+
+          <ion-row>
+            <ion-col col-xl-8 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center>
+              <ion-item no-lines>
+                <span class='first'>Store Name:</span>  <b>{{data.name}}</b>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row text-center>
+            <ion-col col-9 col-xl-6 col-lg-9 col-md-9 col-sm-9 col-xs-9>
+              <ion-item no-lines (click)="changeInput('mobile')">
+                <ion-icon item-left name="phone-portrait" large> </ion-icon>
+                <ion-input type="tel" formControlName="mobile" (keyup)="validateMobile()"  (keyup.enter)="addSale()" readonly={{isLandscape}} placeholder="Customer Mobile Number:"> </ion-input>
+              </ion-item>
+            </ion-col>
+
+            <ion-col col-3 col-xl-2 col-lg-3 col-md-3 col-sm-3 col-xs-3>
+              <ion-item no-lines [ngClass]="class">
+                <ion-icon name="person" large class="icons"></ion-icon>
+              </ion-item>
+            </ion-col>
+          </ion-row>          
+
+          <ion-row>
+            <ion-col col-xl-8 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center (click)="changeInput('billAmount')">
+              <ion-item no-lines> 
+                <ion-label class="abc"><span>Bill Amount:</span></ion-label> 
+                <ion-input class="no-spinners" formControlName="billAmount" type="number" (keyup)="computeFBill()" step="1" readonly={{isLandscape}} (keyup.enter)="addSale()"> </ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col col-xl-8 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center>
+              <ion-item no-lines>
+                <ion-label color="black-color"><span>Discount:</span></ion-label> 
+                <ion-input class="left60" formControlName="disc" type="number" (click)="changeInput('disc')" (keyup)="computeFBill()" (keyup.enter)="addSale()"  readonly={{isLandscape}}> </ion-input>
+                <button ion-button item-right class="rwrdbtn" (click)="rewardPopover($event, 0 ,'Amount', 'Percentage')">{{disctype}} <ion-icon name="arrow-dropdown"></ion-icon></button>
+              </ion-item>
+              <ion-item no-lines class="rewd" *ngIf="disctype=='Percentage'">
+                <span>(equals to Rs.{{discAmount}})</span>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col col-xl-8 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center>
+              <ion-item no-lines>
+                <ion-label color="black-color"><span>Reward points:</span></ion-label> 
+                <ion-input class="left60" formControlName="rew" type="number" (click)="changeInput('rew')" (keyup)="computeFBill()" (keyup.enter)="addSale()"> </ion-input>          
+                <button ion-button item-right class="rwrdbtn" (click)="rewardPopover($event, 1 , 'Points', 'Percentage')">{{rewardtype}} <ion-icon name="arrow-dropdown"></ion-icon></button>
+              </ion-item>
+              <ion-item no-lines class="rewd" *ngIf="rewardtype=='Percentage'">
+                <span>(equals to {{rewardAmount}} points)</span>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </form>
+
+        <ion-row *ngIf="grazieUser" class="verifyrow">
+            <ion-col class="verifycol" col-12>
+              Verify User to Redeem Points
+            </ion-col>
+            <ion-col class="verifycol" col-xl-8 col-lg-12 col-md-12 col-sm-12 col-xs-12>
+              <ion-segment class="verifysegment">
+                <ion-segment-button value="pin" class="segmentbtn" (click)="verifyUser('pin')">
+                  PIN <ion-icon *ngIf="pinverify" name="checkmark" style="color:#adebad; font-size:2.2rem;  font-weight: 500;"></ion-icon>
+                </ion-segment-button>
+                <ion-segment-button value="otp" class="segmentbtn" (click)="verifyUser('otp')">
+                  OTP <ion-icon *ngIf="otpverify" name="checkmark" style="color:#adebad; font-size:2.2rem;  font-weight: 500;"></ion-icon>
+                </ion-segment-button>
+                <ion-segment-button value="qr" class="segmentbtn" (click)="verifyUser('qr')">
+                  QR-Scan <ion-icon *ngIf="qrverify" name="checkmark" style="color:#adebad; font-size:2.2rem;  font-weight: 500;"></ion-icon>
+                </ion-segment-button>
+              </ion-segment>
+            </ion-col>
+          </ion-row>
+          
+        <ion-row>
+          <ion-col class="checkbox" col-xl-8 col-lg-12 col-md-12 col-sm-12 col-xs-12>
+            <ion-item>
+              <ion-label><span class='first'>Use Balance: {{userBalance}}</span></ion-label> 
+              <ion-checkbox [(ngModel)]="useUserBalance" [disabled]="disableBalance" color="danger" (ionChange)="computeFBill()" (keyup.enter)="addSale()"></ion-checkbox>
+            </ion-item>
+          </ion-col>
+          <ion-col col-xl-8 col-lg-12 col-md-12 col-sm-12 col-xs-12 >
+            <ion-item>
+              <ion-label><span class='first'>Redeem Points: {{userRewards}}</span></ion-label> 
+              <ion-checkbox [(ngModel)]="useUserRewards" [disabled]="disableBalance" color="danger" (ionChange)="computeFBill()" (keyup.enter)="addSale()"></ion-checkbox>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row *ngIf="!isLandscape">
+          <ion-col col-xl-4 col-lg-6 col-md-6 col-sm-6 col-xs-6 class="bot">
+            <span class='first'><h5>Final Bill:</h5></span>
+            <ion-item>
+              {{finalBill}}
+            </ion-item>
+          </ion-col>
+          <ion-col col-xl-4 col-lg-6 col-md-6 col-sm-6 col-xs-6 class="bot">
+            <span class='first'><h5>Amount Paid: </h5></span>
+            <ion-item no-lines [ngClass]="amountclass"> 			
+              <ion-input type="number" [(ngModel)]="amountPaid" (click)="changeInput('amount')" (keyup.enter)="addSale()"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+      </ion-col>
+    </ion-row>
+
+    <ion-row text-center *ngIf="validOffers.length">
+      <ion-col col-xl-8 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center>
+        <button ion-button block class="offerbtn" (click)="showOffers()">
+          {{validOffers.length}} Offers available
+        </button>
+      </ion-col>
+    </ion-row>  
+
+    <ion-row text-center>
+      <ion-col col-xl-8 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center>
+        <button ion-button block color="danger" (click)="addSale()">
+          Save Bill
+        </button>
+      </ion-col>
+    </ion-row>	
+
+  </ion-grid>
+
+</ion-content>

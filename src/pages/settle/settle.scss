@@ -1,0 +1,26 @@
+page-settle {
+
+	.item {
+		background-color: #ffe6e6;
+	}
+
+	ion-row {
+		display: flex;
+		justify-content: center;
+	}
+
+	span {
+		font-size: 1.7rem;
+		font-weight: 400;
+	}
+
+	.main-wrap{
+		margin:auto
+	}
+
+	.wrap {
+		max-width: 280px;
+		margin: auto;
+	}
+
+}

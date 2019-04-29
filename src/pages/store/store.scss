@@ -1,0 +1,88 @@
+	page-store {
+
+		.inf {
+			white-space: pre;
+			text-align: left;
+			font-size: 1.7rem;
+		}
+
+		.first {
+			white-space: pre;
+			text-align: center;
+			color: #990000;
+			font-size: 1.7rem;
+			font-weight: 500;
+		}
+		
+		.profilepic {
+			max-height: 20rem;
+      padding: 0;
+		}
+
+		.imageslider {
+			height: 6rem;
+			min-width: 8rem;
+			max-width: 8rem;
+			padding: 0;
+			margin: 0;
+		}
+
+		ion-card {
+			width: 100%;	
+			padding: 0;	
+			margin-left: 0;	
+		}
+
+		ion-row {
+			display: flex;
+			justify-content: center;
+      background: transparent;
+		}
+
+		ion-item-divider {
+			display: flex;
+			justify-content: center;
+			font-size: 1.6rem;
+      background: transparent;
+		}
+
+		span {
+			font-size: 1.6rem;
+		}
+
+		.box {
+			height: 90px;
+			border-color: red;
+			color: red;
+			width: 100%;
+			border-radius: 9px;
+			background-color: transparent;
+		}
+
+		.icond {
+    	font-size: 40px; //Preferred size here
+    }
+
+    .icond1 {
+    	font-size: 30px;
+    }
+
+    .upperrow {
+    	padding-bottom: 0px;
+    	margin-bottom: 0px;
+    	background-color: transparent;
+    }
+
+    .mdd {
+    	font-size: 1.5rem;
+    }
+
+    #storemap {
+    	background: transparent;
+      margin: auto;
+    }
+
+    .item-bold {
+     font-weight: bold;
+   }
+}

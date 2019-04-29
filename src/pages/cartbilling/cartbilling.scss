@@ -1,0 +1,100 @@
+page-cartbilling {
+	.col{
+		padding-top: 0px;
+		padding-left: 0px;
+		padding-right: 0px;
+		padding-bottom: 0px;
+		margin: auto;
+	}
+
+	.descol{
+		border: solid 1px #fff;
+	}
+
+	.itemname {
+		height: 40px;
+		padding-left: 17px;
+		margin-bottom: 4px;
+		padding-top: 8px;
+		background-color: rgba(85, 0, 0,0.3);
+		font-size: 1.7rem;
+		color: #4d0000;
+	}
+
+
+
+	p {
+		padding: 0;
+		margin: 0;
+	}
+
+	.largeicon{
+		font-size: 2.0rem;
+	}
+
+	.toprow {
+		font-size: 2.0rem;
+	}
+
+	.divider{
+		margin-top: 5px;
+	}
+
+	.dividreritem {
+		background-color: red;
+		color: white;
+	}
+
+	.tablecol2 {
+		display: flex;
+		justify-content: center;
+		background-color: #ffe6e6
+	}
+
+	.tablecol3 {
+		display: flex;
+		justify-content: center;
+	}
+
+	.tablecol4 {
+		display: flex;
+		justify-content: center;
+		font-size: 2.1rem;
+	}
+
+	.item {
+		max-height: 20px;
+		margin-bottom: 0;
+		background-color: rgba(255, 255, 255,0.7);
+	}
+
+	.searchlistitem {
+		background:white;
+	}
+
+	.searchlist {
+		position: absolute;
+		background:white;
+		z-index: 5;
+		width: 100%;
+		margin: auto;
+	}
+
+	.searchlistcol {
+		margin: auto;
+	}
+
+	.item-checkbox .checkbox {
+		right: auto;
+	}
+
+	.titles {
+		background-color: #e6e6ff;
+	}
+
+	form{
+		padding: 0;
+		margin: 0px;
+	}
+
+}

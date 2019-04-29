@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Locate your store</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-item (click)="showAddressModal()" class="inp">
+    <button ion-button clear color="dark" type="button" item-left (click)="showPasswordText = !showPasswordText">
+      <ion-icon name="search"> </ion-icon>
+    </button>
+    <ion-input [(ngModel)]="address.place" disabled="true" type="text" placeholder="Pick an address"></ion-input>
+  </ion-item>
+  <div #mapElement id="mapElement" style="height: 100%;"></div> 
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div style="text-align: center;">
+      <ion-buttons>
+        <button ion-button block (click)="saveStore()">Save</button>
+      </ion-buttons> 
+    </div>
+  </ion-toolbar>
+</ion-footer>

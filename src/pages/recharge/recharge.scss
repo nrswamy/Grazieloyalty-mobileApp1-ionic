@@ -1,0 +1,57 @@
+page-recharge {
+  .offerspan{
+    color:green;
+    text-align: right;
+    margin-right: 0;
+  }
+
+  .col {
+    padding: 0;
+    margin: 0;
+    margin: auto;
+  }
+
+  .itemdetail{
+    background-color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+    text-align: center;
+  }
+
+  .packheading{
+    background-color: rgba(230, 230, 230, 0.8);
+    font-weight: 550;
+  }
+
+  .paybutton {
+    text-align: center;
+    font-size: 1.8rem;
+    width: 70px;
+    height: 55px;
+    background-color: rgb(255, 80, 80);
+  }
+
+  .strike {
+    text-decoration:line-through;
+    color: rgb(102, 102, 153);
+    font-size: 1.3rem;
+  }
+
+  .item-header {
+    background-color: rgba(46, 184, 184, 0.5);
+    font-size: 1.8rem;
+    font-weight: 500;
+    height: 40px;
+  }
+
+  .topup-item {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+
+  .item-col {
+    padding:0;
+    margin:0;
+
+  }
+}

@@ -1,0 +1,119 @@
+page-account {
+
+  ion-content { background-color: transparent !important; }
+
+	.col{
+		padding:0;
+		margin: 0;
+	}
+
+  .item-divider {
+    width: 100%;
+    margin: 0;
+    color: white;
+    text-align: center;
+    opacity: 0.8;
+  }
+
+	ion-row {
+		padding:0;
+		margin: 0;
+	}
+
+	.item {
+		padding:0;
+		margin: 0;
+		background-color: rgba(255, 255, 255,0.4);
+	}
+
+	.inf {
+		white-space: pre;
+		text-align: left;
+		font-size: 2.0rem;
+	}
+
+	.first {
+		white-space: pre;
+		text-align: center;
+		color: #990000;
+		font-size: 2.0rem;
+		font-weight: 500;
+	}
+
+	ion-row {
+		display: flex;
+		justify-content: center;
+	}
+
+	.card-title {
+		position: absolute;
+		top: 16%;
+		font-size: 1.2em;
+		width: 100%;
+		font-weight: bold;
+		color: #fff;
+	}
+
+	.card-subtitle {
+		font-size: 1.8em;
+		position: absolute;
+		top: 40%;
+		width: 100%;
+		color: #fff;
+	}
+
+	.small-box {
+		width:90%;
+		height: 9em;
+		position: relative;
+		text-align: center;
+		overflow: visible;
+		margin-left: 0px;
+		margin-top: 20px;
+		margin: auto;
+		font-weight: 400;		
+	}
+
+	.right-bottom {
+		background:
+		radial-gradient(hsl(0, 100%, 27%) 4%, hsl(0, 100%, 18%) 9%, hsla(0, 100%, 20%, 0) 9%) 0 0,
+		radial-gradient(hsl(0, 100%, 27%) 4%, hsl(0, 100%, 18%) 8%, hsla(0, 100%, 20%, 0) 10%) 50px 50px,
+		radial-gradient(hsla(0, 100%, 30%, 0.8) 20%, hsla(0, 100%, 20%, 0)) 50px 0,
+		radial-gradient(hsla(0, 100%, 30%, 0.8) 20%, hsla(0, 100%, 20%, 0)) 0 50px,
+		radial-gradient(hsla(0, 100%, 20%, 1) 35%, hsla(0, 100%, 20%, 0) 60%) 50px 0,
+		radial-gradient(hsla(0, 100%, 20%, 1) 35%, hsla(0, 100%, 20%, 0) 60%) 100px 50px,
+		radial-gradient(hsla(0, 100%, 15%, 0.7), hsla(0, 100%, 20%, 0)) 0 0,
+		radial-gradient(hsla(0, 100%, 15%, 0.7), hsla(0, 100%, 20%, 0)) 50px 50px,
+		linear-gradient(45deg, hsla(0, 100%, 20%, 0) 49%, hsla(0, 100%, 0%, 1) 50%, hsla(0, 100%, 20%, 0) 70%) 0 0,
+		linear-gradient(-45deg, hsla(0, 100%, 20%, 0) 49%, hsla(0, 100%, 0%, 1) 50%, hsla(0, 100%, 20%, 0) 70%) 0 0;
+		background-color: #300; 
+		background-size: 100px 100px;
+		opacity: 0.8;
+	}
+
+	.payButton {
+		position: relative;
+		padding-top: 6em;
+	}
+
+	.paybutton {
+		background-color: rgba(255, 0, 0,0.5);
+	}
+
+  .Payment-status {
+    color: green;
+    font-size: 2rem;
+    font-weight: 450;
+    text-align: left;
+  }
+
+  .statustext {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .updatebtn {
+    font-size: 1.6rem;
+  }
+
+}

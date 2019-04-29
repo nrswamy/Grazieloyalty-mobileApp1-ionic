@@ -1,0 +1,97 @@
+page-store-dash {
+	.scroll{
+			height: 100%;
+		}
+		
+		.aligncenter {
+        justify-content: center;
+        align-items: center;
+      }
+
+
+		ion-col {
+			width: 100vw;
+		}
+
+		.small-box {
+			width:100%;
+			height: 9rem;
+			position: relative;
+			text-align: center;
+			overflow: visible;
+			margin-left: 0px;
+			padding: 0px;
+			margin: 0;
+			font-weight: 400;			
+		}
+
+		.left-top {
+			background: linear-gradient(to bottom right, #ff8080 0%, #ff3333 140%);
+		}
+
+		.right-top {
+			background: linear-gradient(to bottom left, #ff8080 0%, #ff3333 140%);
+		}
+		.right-bottom {
+			background: linear-gradient(to top left, #ff8080 0%, #ff3333 140%);
+		}
+		.left-bottom {
+			background: linear-gradient(to top right, #ff8080 0%, #ff3333 140%);
+		}
+
+		.graph {
+			width:100%;
+			text-align: center;
+			overflow: visible;
+			background-color: map-get($colors, light);
+			font-weight: 500;
+			font-size: 21px;
+		}
+
+		.full-image {
+			width: 100%;
+			height: 100%;
+		}
+
+		.card-title {
+			position: absolute;
+			top: 16%;
+			font-size: 1.6em;
+			width: 100%;
+			font-weight: bold;
+			color: #fff;
+		}
+
+		.card-subtitle {
+			font-size: 1.0em;
+			position: absolute;
+			top: 52%;
+			width: 100%;
+			color: #fff;
+		}
+
+		.right {
+			float:right;
+			text-align: right;
+		}
+
+		.opp {
+			padding: 0;
+			background: red;
+		}
+
+		ion-datetime {
+			padding-left: 0;
+			padding-right: 0;
+		}
+
+		.grey {
+			background-color: #ff9999;
+		}
+
+		ion-card-header {
+            font-weight: bold;
+            padding: 0;
+            color: orange
+        }
+}

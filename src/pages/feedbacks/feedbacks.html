@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>feedbacks</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-card *ngFor="let item of comments">
+    <ion-item class="mob">
+      <span>{{item.userMobile}}</span>
+    </ion-item>
+    <ion-item class="comment" text-wrap>
+      <span>{{item.comment}}</span>
+    </ion-item>
+  </ion-card>
+</ion-content>

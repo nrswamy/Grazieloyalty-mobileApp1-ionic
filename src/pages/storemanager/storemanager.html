@@ -1,0 +1,72 @@
+<ion-header>
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>Your Stores</ion-title>	
+		<ion-buttons end>
+			<button ion-button (click)="addStore()">
+				<ion-icon name="add-circle" class="large"></ion-icon>
+			</button>
+		</ion-buttons>	
+	</ion-navbar>
+</ion-header>
+
+<ion-content class = "blueback">
+
+	<ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+    pullingIcon="arrow-dropdown"
+    pullingText="Pull to refresh"
+    refreshingSpinner="circles"
+    refreshingText="Refreshing...">
+  </ion-refresher-content>
+</ion-refresher>
+
+<ion-grid>
+  <ion-row>
+   <ion-col col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-3>
+    <ion-list *ngIf="stores">
+     <ion-item *ngFor="let store of stores" (click)="openstore(store)">
+      <ion-row class="det">
+       <ion-col col-4>
+        <ion-row class="det">
+          <img src={{store.profilePic}}>
+        </ion-row>
+      </ion-col>
+      <ion-col col-8>
+        <ion-row class="det">
+         <span class="title">{{store.name}}</span>
+       </ion-row>
+       <ion-row class="det">
+         <span class="subtitle">{{store.address.locality}}, {{store.address.city}}</span>
+       </ion-row>
+       <ion-row class="det">
+         <ion-col col-8 class="rating">
+          <rating [(ngModel)]="store.userRating" readOnly="true" max="5"	starIconName="star"></rating><span class="nopr">({{store.nopr}})</span>
+        </ion-col>
+        <ion-col col-4 class="rating" style="text-align: right;">
+          {{store.customerCount}} <ion-icon name="person"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>						
+</ion-item>
+</ion-list>
+</ion-col>
+</ion-row>
+</ion-grid>
+
+</ion-content>
+
+<ion-footer>
+	<ion-toolbar>
+		<div style="text-align: center;">
+			<ion-buttons>
+				<button ion-button block (click)="addStore()" >
+					Add new store
+				</button>
+			</ion-buttons> 
+		</div>
+	</ion-toolbar>
+</ion-footer>

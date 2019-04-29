@@ -1,0 +1,94 @@
+<ion-content>
+
+  <div padding >
+
+    <ion-row>
+      <ion-col>
+        <img [@flyInLeftSlow]="logoState" class="logo" src="assets/images/grazie4.JPG" />
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-xl-4 col-lg-6 col-md-8 col-sm-9>
+        <ion-list inset [@flyInRightSlow]="formState">
+          <ion-item class="text" nopadding>
+            <h5>Login with your mobile number</h5>
+          </ion-item>
+
+          <ion-item class="inp">
+            <ion-input placeholder="Mobile number" [(ngModel)]="data.username" (keyup.enter)="login()" type="tel" clearInput></ion-input>
+          </ion-item>
+
+          <ion-item class="inp">
+            <ion-input placeholder="password" [(ngModel)]="data.password" (keyup.enter)="login()" type="text" *ngIf="showPasswordText"></ion-input>
+            <ion-input placeholder="password" [(ngModel)]="data.password" (keyup.enter)="login()" type="password" *ngIf="!showPasswordText" ></ion-input>
+            <button ion-button clear color="dark" type="button" item-right (click)="showPasswordText = !showPasswordText">
+              <ion-icon name="eye"> </ion-icon>
+            </button>
+          </ion-item> 
+
+           <a class="alink" (click)="forgotPassword()"> Forgot password</a>      
+        </ion-list>
+       
+      </ion-col>
+    </ion-row>
+<!--
+    <ion-row text-center [@flyInLeftSlow]="formState">
+      <ion-col col-xl-3 col-lg-6 col-md-8 col-sm-9>
+        <ion-item no-lines class="check" >
+          <ion-label>By logging you agree to our T&C</ion-label>
+          <ion-checkbox class="custom-checkbox" checked="true"></ion-checkbox>          
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  -->
+
+    <ion-row text-center>
+      <ion-col col-xl-2 col-lg-3 col-md-4 col-sm-6>
+        <button ion-button class="login-button" (click)="login()" [@flyInRightSlow]="loginState">Login</button>
+      </ion-col>
+      <ion-col col-xl-2 col-lg-3 col-md-4 col-sm-6>     
+        <button ion-button class="login-button" (click)="register()" block [@flyInRightSlow]="loginState">Sign Up</button>
+      </ion-col> 
+    </ion-row>
+
+    <ion-row text-center [@flyInLeftSlow]="loginState">
+      <ion-col>
+        <H4>-- OR --</H4>
+      </ion-col>
+    </ion-row>
+
+    <ion-row text-center [@flyInRightSlow]="formState">
+      <ion-col col-xl-4 col-lg-6 col-md-9 col-sm-12>
+       <button ion-button block color="danger" (click)="loginGoogle()" *ngIf="!userProfile">
+        <ion-icon name="logo-googleplus"></ion-icon>
+        Login with Google
+      </button>
+
+      <ion-item *ngIf="userProfile">
+        <ion-avatar item-left>
+          <img [src]="userProfile.photoURL">
+        </ion-avatar>
+        <h2>{{ userProfile.displayName }}</h2>
+        <h3>{{ userProfile.email }}</h3>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+</div>
+
+</ion-content>
+
+<!--
+<form (ngSubmit)="logForm()">
+      <ion-item>
+        <ion-label>Todo</ion-label>
+        <ion-input type="text" [(ngModel)]="todo.title" name="title"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Description</ion-label>
+        <ion-textarea [(ngModel)]="todo.description" name="description"></ion-textarea>
+      </ion-item>
+      <button ion-button type="submit" block>Add Todo</button>
+    </form>
+  -->

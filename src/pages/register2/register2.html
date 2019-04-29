@@ -1,0 +1,73 @@
+<!--
+  Generated template for the Register2Page page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+	<ion-navbar>
+		<ion-title>Register</ion-title>
+	</ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+	<ion-grid *ngIf="!otpsent" text-center>
+
+		<div *ngIf="!invisible" id="recaptcha-container"></div>
+
+		<ion-row text-center>
+			<h2><span>Confirm your mobile number</span></h2>
+		</ion-row>
+		<ion-row text-center>
+			<ion-item>
+				<ion-input [(ngModel)]="formdata.mobile_no" type="tel" placeholder="Mobile Number" (keyup)="validateMobile()"></ion-input>    
+			</ion-item>
+		</ion-row>
+		<ion-row text-center *ngIf="ifNameRequired">
+			<ion-item>
+				<ion-input [(ngModel)]="formdata.fullname" type="text" placeholder="Full Name"></ion-input>    
+			</ion-item>
+		</ion-row>
+		<ion-row text-center *ngIf="showpassword">
+			<ion-item>
+				<ion-label>Password</ion-label>
+				<ion-input [(ngModel)]="formdata.password" type="password" (keyup)="validatePassword()"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label>Confirm Password</ion-label>
+				<ion-input [(ngModel)]="confirmPassword" type="password"></ion-input>
+			</ion-item>
+		</ion-row>
+
+		<ion-row text-center>
+			<ion-col>
+				<button ion-button color="danger" (click)="sendOTP()">Send OTP</button>
+			</ion-col>
+		</ion-row>
+
+
+	</ion-grid>
+
+	<ion-grid *ngIf="otpsent" text-center>
+		<ion-row>
+			<ion-col col-9>
+				<ion-input [(ngModel)]="otpVerify" type="text" placeholder="Enter OTP"></ion-input> 
+			</ion-col>
+			<ion-col col-3>
+				<a (click)="sendOTP()">Resend OTP</a>
+			</ion-col>
+		</ion-row>
+
+		<ion-row text-center>
+			<ion-col>
+				<button ion-button color="danger" (click)="verifyOTP()">Verify OTP</button>
+			</ion-col>
+		</ion-row>
+
+	</ion-grid>
+
+</ion-content>

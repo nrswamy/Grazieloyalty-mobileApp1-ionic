@@ -1,0 +1,136 @@
+<ion-header>
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>Create New Store</ion-title>
+    <!--
+		<ion-buttons end>
+      <button ion-button (click)="addStore()">
+        <ion-icon name="">Save</ion-icon>
+      </button>
+    </ion-buttons> 
+  -->
+</ion-navbar>
+</ion-header>
+
+<ion-content>  
+  <ion-grid>
+    <ion-row text-center>
+      <ion-col col-lg-6 col-xl-6 col-md-6 col-sm-12 col-xs-12>
+        <form [formGroup]="storeForm">
+          <ion-item-divider color="light">Info</ion-item-divider>
+          <ion-row>
+            <ion-col col-xl-8 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center>
+              <ion-item no-lines> 
+                <ion-label><span>Name*:</span></ion-label> 
+                <ion-input formControlName="storename" type="text" autocorrect="on" autocomplete="on"> </ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col col-xl-8 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center>
+              <ion-item no-lines (click)="showContactModal()"> 
+                <span class="spanLabel">Mobile #*:</span>
+                <span *ngFor="let contact of contacts">
+                  {{contact}},
+                </span>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row> 
+            <ion-col col-xl-8 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center>
+              <ion-item no-lines>
+                <ion-label>Category</ion-label>
+                <ion-select formControlName="category" multiple="true" cancelText="Cancel" okText="Ok!">
+                  <ion-option *ngFor="let cat of categories" value= {{cat}} >{{cat}}</ion-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col col-xl-8 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center>
+              <ion-item no-lines> 
+                <ion-label><span>Description:</span></ion-label> 
+                <ion-input formControlName="description" type="text" autocorrect="on" autocomplete="on"> </ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col col-xl-8 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center>
+              <ion-item-divider color="light">Address</ion-item-divider>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col col-xl-8 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center>
+              <ion-item no-lines> 
+                <ion-label><span>Address*:</span></ion-label> 
+                <ion-input formControlName="address" type="text"> </ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col col-xl-8 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center>
+              <ion-item no-lines> 
+                <ion-label><span>City/Town*:</span></ion-label> 
+                <ion-input formControlName="city" type="text" (ionFocus)="showModal()"> </ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col col-xl-8 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center>
+              <ion-item>
+                <ion-label class="first1"><span>State*</span></ion-label>
+                <!--
+                <ion-select formControlName="state" cancelText="Cancel" okText="Ok!">
+                  <ion-option *ngFor="let state of states" value= {{state}} >{{state}}</ion-option>
+                </ion-select>
+              -->
+              <ion-input formControlName="state" type="text"> </ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col col-xl-8 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center>
+            <ion-item no-lines> 
+              <ion-label><span>Zipcode*:</span></ion-label> 
+              <ion-input formControlName="zip" type="text"> </ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col col-xl-8 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center>
+            <ion-item class="borderen"> 
+              <ion-label><span>Referral Code:</span></ion-label> 
+              <ion-input formControlName="ref" type="text"> </ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+      </form>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+</ion-content>
+
+
+<ion-footer>
+  <ion-toolbar>
+    <div style="text-align: center;">
+      <ion-buttons>
+        <button ion-button block (click)="showLocPage()" >
+          Save and continue
+        </button>
+      </ion-buttons> 
+    </div>
+  </ion-toolbar>
+</ion-footer>

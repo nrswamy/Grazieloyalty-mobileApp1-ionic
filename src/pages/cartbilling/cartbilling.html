@@ -1,0 +1,163 @@
+<!--
+  Generated template for the CartbillingPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+	<ion-navbar>
+		<ion-title>Add Cart Items</ion-title>
+	</ion-navbar>
+
+</ion-header>
+
+
+<ion-content (click)="queryblur()">
+
+	<ion-grid>
+		<ion-row>
+			<ion-col>
+				<form [formGroup]="cartForm">					
+					<ion-row>
+						<ion-col col-12 class="descol">
+							<ion-item tappable>
+								<ion-label>Item Name:</ion-label>
+								<ion-input type="text" (keyup)="getItems($event)" formControlName="itemName"></ion-input>
+							</ion-item>
+						</ion-col>
+            <ion-col col-12 class="descol">
+              <ion-item tappable class="searchlistitem1">
+                <ion-label>Scan Code:</ion-label>
+                <ion-input type="text" (keyup)="getItemBars($event)" formControlName="barCode"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="validString" class="searchlistrow">
+            <ion-col class="searchlistcol">
+             <ion-list class="searchlist">
+              <ion-item tappable (click)=newItem(query) class="searchlistitem">
+               {{ query }}
+             </ion-item>
+             <ion-item tappable *ngFor="let item of items" (click)=selectItem(item)  (keyup.enter)="selectItem(item)" class="searchlistitem">
+               <span item-start>{{ item.itemName }}</span>
+               <span style="text-align: center;">MRP {{ item.orgPrice }} </span>
+               <span item-end> PRICE {{ item.finalPrice }}</span>
+             </ion-item>
+           </ion-list>
+         </ion-col>
+       </ion-row>
+
+       <ion-row>
+        <ion-col col-12 class="descol">
+         <ion-item tappable>
+          <ion-label>Price per Unit:</ion-label>
+          <ion-input type="number" (ionChange)="onChange()"  (keyup.enter)="addItem()" formControlName="orgPrice"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-12 class="descol">
+       <ion-item tappable>
+        <ion-label>Quantity:</ion-label>
+        <ion-input type="number" (ionChange)="onChange()"  (keyup.enter)="addItem()" formControlName="quantity"></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+
+  <ion-row>
+    <ion-col col-6 class="descol">
+     <ion-item tappable>
+      <ion-label>Tax included</ion-label>
+      <ion-checkbox item-right color="dark" formControlName="includesTax" (ionChange)="taxIncludedFlip()"  (keyup.enter)="addItem()"></ion-checkbox>
+    </ion-item>
+  </ion-col>
+
+  <ion-col col-6 class="descol">
+   <ion-item tappable>
+    <ion-label>Tax(%):</ion-label>
+    <ion-input type="number" (ionChange)="onChange()"  (keyup.enter)="addItem()" formControlName="GST"></ion-input>
+  </ion-item>
+</ion-col>
+</ion-row>
+
+<ion-row>
+  <ion-col col-12 class="descol">
+   <ion-item tappable>
+    <ion-label>Final Price:</ion-label>
+    <ion-input type="number" formControlName="finalPrice" disabled></ion-input>
+  </ion-item>
+</ion-col>
+</ion-row>
+
+<ion-row>
+  <ion-col col-12 class="descol">
+   <ion-item tappable>
+    <ion-label>Discount(%):</ion-label>
+    <ion-input type="number" formControlName="discount" max="100" (ionChange)="onChange()"  (keyup.enter)="addItem()"></ion-input>
+  </ion-item>
+</ion-col>
+</ion-row>
+</form>
+</ion-col>
+</ion-row>
+
+<ion-row>
+ <ion-col col-4 class="dividercol">
+  <button ion-button block color="danger" (click)="addItem()"> Add to cart</button>
+</ion-col>	
+</ion-row>
+
+<ion-row>
+ <ion-col class="dividercol">
+  <ion-list>
+   <ion-item text-center text-justify text-wrap class="titles" tappable>
+    <ion-row>
+     <ion-col col-8>
+      <span item-start>Item</span>
+    </ion-col>
+    <ion-col col-1>
+      <span>Qty</span>
+    </ion-col>
+    <ion-col col-2>
+      <span item-end>Price</span>
+    </ion-col>
+    <ion-col col-1>
+    </ion-col>
+  </ion-row>
+</ion-item>
+
+<ion-item tappable *ngFor="let item of cartItems; let in = index" [attr.data-index]="in" text-center text-justify text-wrap (click)="fillOld(item, in)">
+  <ion-row>
+   <ion-col col-8 class="tablecol1">
+    <span item-start>{{item.itemName}}</span>
+  </ion-col>
+  <ion-col col-1 class="tablecol2">
+    <span>{{item.quantity}}</span>
+  </ion-col>
+  <ion-col col-2 class="tablecol3">
+    <span item-end>{{item.finalPrice}}</span>
+  </ion-col>
+  <ion-col col-1 class="tablecol4" (click)="removeItem(in)">
+    <ion-icon name="md-close"></ion-icon>
+  </ion-col>
+</ion-row>
+</ion-item>
+</ion-list>
+</ion-col>
+</ion-row>
+</ion-grid>
+
+</ion-content>
+
+<ion-footer>
+	<ion-toolbar>
+		<div style="text-align: center;">
+			<ion-buttons>
+				<button ion-button block (click)="finalizeBill()">Finalize</button>
+			</ion-buttons> 
+		</div>
+	</ion-toolbar>
+</ion-footer>

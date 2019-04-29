@@ -1,0 +1,61 @@
+page-offer {
+
+	.segment {
+		background: linear-gradient(to right, #ccffff 72%, #ffffff 101%);
+		border-radius: 5px;
+		margin-bottom: 15px;
+		margin-top: 10px;
+		height: 30px;
+	}
+
+	.item {
+		background-color: #ffe6e6;
+		font-size: 1.6rem;
+		margin-bottom: 5px;
+		padding: 5px;
+	}
+
+	.input-has-focus {
+		border: solid 1px #fff;
+		box-shadow: inset 1px 1px 2px 0 #707070;
+		transition: box-shadow 0.3s;
+	}
+
+	.col {
+		padding: 0;
+		margin: auto;
+	}
+
+	.grid {
+		padding: 0;
+		margin-top: 0;
+		margin: 0;
+	}
+
+	.longtitem {
+		padding-top: 0;
+		padding-bottom: 0;
+		height: 75px;
+	}
+
+	.shortitem {
+		padding-top: 0;
+		padding-bottom: 0;
+    color: black;
+	}
+
+	.labelclass {
+		font-size: 25px;
+	}
+
+  ion-icon {
+    font-size: 2rem !important;
+    color: #662200;
+  }
+
+  .rwrdbtn {
+    background-color: transparent;
+    box-shadow: none;
+    color: black;
+  }
+}

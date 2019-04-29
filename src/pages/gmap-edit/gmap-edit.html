@@ -1,0 +1,26 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-title>
+			Locate your store
+		</ion-title>
+		<ion-buttons start>
+			<button ion-button (click)="cancel()">
+				Cancel
+			</button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+ <div style="height: 100%;" #map2 id="map2"></div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div style="text-align: center;">
+      <ion-buttons>
+        <button ion-button block (click)="saveLoc()">Save</button>
+      </ion-buttons> 
+    </div>
+  </ion-toolbar>
+</ion-footer>

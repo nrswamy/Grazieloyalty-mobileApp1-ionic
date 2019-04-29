@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Sales History</ion-title>  
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row *ngIf="!history.length">
+      <ion-col>
+        <span class="noPayments">You have no sales in database</span>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-lg-6 col-xl-6 col-md-6 col-sm-12 col-xs-12 *ngIf="history.length">
+        <ion-row  class="item-header">
+          <ion-col col-3 class="item-col">
+            <span>Customer #</span>
+          </ion-col>
+          <ion-col col-3 class="item-col">
+           <span>Bill</span>
+         </ion-col>
+         <ion-col col-3 class="item-col">
+          <span>Date (yyyy-mm-dd)</span>
+        </ion-col>
+        <ion-col col-3 class="item-col">
+          <span>Transaction type</span>
+        </ion-col>
+      </ion-row>
+
+      <ion-item *ngFor="let sale of history" no-lines [class.sucitem]="sale.transactionType == transPur" [class.ukwnitem]="sale.transactionType == transSet" (click)="showModal(sale)">
+        <ion-row>
+          <ion-col col-3 class="item-col">
+            <span>{{sale.userMobile}}</span>
+          </ion-col>
+          <ion-col col-3 class="item-col">
+            <span>{{sale.finalBill}}</span>
+          </ion-col>
+          <ion-col col-3 class="item-col">
+            <span>{{sale.ddmmyyyy}}</span>
+          </ion-col>
+          <ion-col col-3 class="item-col">
+            <span>{{sale.transactionType}}</span>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+</ion-grid>
+</ion-content>

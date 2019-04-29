@@ -1,0 +1,84 @@
+.ios, .md {
+
+  login {
+
+    .scroll-content {
+      display: flex;
+      flex-direction: column;
+
+    }
+
+    img {
+      width: 80rem;
+      height: 10rem;
+      max-height: 150px;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+
+    ion-row {
+      display: flex;
+      justify-content: center;
+    }
+
+    .text {
+      font-weight: 500;
+      font-size: 1.8rem;
+      background-color: rgba(0, 0, 0,0);
+    }
+
+    .inp {
+      border-radius: 5px !important;
+      padding-left: 10px !important;
+      margin-bottom: 5px;
+      background-color: rgba(0, 0, 0,0.2);
+      padding-bottom: 0;
+      font-size: 1.8rem;
+    }
+
+    ion-list {
+      margin: 0;
+    }
+
+    .login-button {
+      width: 100%;
+      border-radius: 10px;
+      font-size: 0.9em;
+      border: 1px solid #fff;
+      background-color: #ff6666;
+    }
+
+    .logo {
+      background-size: cover;
+      height: 100%;
+      width: 80%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .check {
+      font-size: 1.5rem;
+      margin: 0; 
+      padding: 0;
+      margin-top: -2rem;
+      background-color: rgba(0, 0, 0,0.05);
+      box-shadow: none;
+      margin-right: 0px;
+    }
+
+    .button {
+      border-radius: 5px;
+    }
+
+    .label {
+
+    }
+
+    .alink {
+      color: red;
+      float: right;
+    }
+
+  }
+
+}

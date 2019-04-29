@@ -1,0 +1,50 @@
+page-customer {
+
+  .item {    
+    margin-bottom: 3px;
+  }
+
+  .col{
+    padding-top: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    margin: auto;
+    border: solid 1px #fff;
+  }
+
+  .sucitem {
+    background-color: rgba(102, 153, 0,0.5)
+  }
+
+  .ukwnitem {
+    background-color:rgba(230, 230, 0, 0.5)
+  }
+
+  .failitem {
+    background-color: rgba(230, 0, 0, 0.5)
+  }
+
+  .item-col {
+    padding: 0;
+    margin: 0;
+    font-size: 1.6rem;
+    text-align: center;
+    border: 0px !important;
+    border-bottom-color: transparent !important;
+  }
+
+  .item-header {
+   background-color: rgba(46, 184, 184, 0.5);
+   font-size: 2.4rem;
+   font-weight: 500;
+   padding-top: 8px;
+   padding-bottom: 8px;
+   margin-bottom: 2px;
+ }
+
+ ion-row {
+  padding: 0;
+  margin: 0;
+ }
+}

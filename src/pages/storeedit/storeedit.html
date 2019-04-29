@@ -1,0 +1,201 @@
+<ion-header>
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title *ngIf="data">{{data.name}}</ion-title>
+		<ion-buttons end>
+			<button ion-button (click)="UpdateStore()">
+				<ion-icon></ion-icon>Save
+			</button>
+		</ion-buttons>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+
+	<ion-item-group *ngIf="data">
+		<ion-grid>
+			<ion-row>
+				<ion-col col-12 col-xl-4 col-lg-6 col-md-12 col-sm-12 col-xs-12>
+
+					<ion-card class="fishes">
+						<img class = "profilepic" (click)="viewImage()" src={{imageData.profile}}/>
+						<button ion-button color="light" class="fish" (click)="addProfileImage()">Edit Picture</button>	
+					</ion-card>
+
+
+
+					<ion-item-divider color="light">Info</ion-item-divider>
+
+					<ion-row>	
+						<ion-col class="thumb-col">
+							<div class="thumbs" *ngFor="let pic of imageData.images; let i = index" [attr.data-index]="i">
+								<img (click)="viewStoreImage(i)"class="imageslider" src="{{pic}}">
+								<div class="deleteopt">
+									<button ion-button color="light" class="thumbdel" (click)="deleteImage(i)">
+										<ion-icon name="trash"></ion-icon>
+									</button>
+								</div>								
+							</div>
+							
+							<img (click)="addImage()" *ngIf="instoreArray.length < 9" class="imageslider" src="assets/images/addImage.png">
+						</ion-col>
+					</ion-row>
+
+
+					<!-- <img id="profile-image" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/94311/me.png"> -->	
+					<ion-row>	
+						<ion-col>
+							<ion-item>
+								<ion-label item-start class="first"><span>Name</span></ion-label>
+								<ion-input type="text" [(ngModel)]="data.name" (ionChange)='updateRequired()'></ion-input>
+							</ion-item>
+						</ion-col>
+					</ion-row>
+
+					<ion-row>
+            <ion-col col-xl-8 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center>
+              <ion-item no-lines (click)="showContactModal()"> 
+                <span class="first">Mobile #:</span>
+                <span *ngFor="let contact of data.contactNumbers">
+                  {{contact}},
+                </span>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>	
+            <ion-col>
+             <ion-item>
+              <ion-label item-start class="first"><span>ChainId</span></ion-label>
+              <ion-input type="text" readonly="true" [(ngModel)]="data.chainId" (click)="chainIdAlert()"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>	
+          <ion-col>
+           <ion-item>
+            <ion-label class="first2">Category</ion-label>
+            <ion-select [(ngModel)]="selectedCats" (ionChange)='updateRequired()' multiple="true" cancelText="Cancel" okText="Ok!">
+             <ion-option *ngFor="let category of categories" value= {{category}} >{{category}}</ion-option>
+           </ion-select>
+         </ion-item>
+       </ion-col>
+     </ion-row>
+
+     <ion-item-divider color="light">Address:</ion-item-divider>
+     <ion-row>	
+      <ion-col>
+       <ion-item>
+        <ion-label item-start class="first"><span>Locality</span></ion-label>
+        <ion-input type="text" [(ngModel)]="data.address.locality" (ionChange)='updateRequired()'></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row>	
+    <ion-col>
+     <ion-item>
+      <ion-label item-start class="first"><span>City</span></ion-label>
+      <ion-input type="text" [(ngModel)]="data.address.city" disabled></ion-input>
+    </ion-item>
+  </ion-col>
+</ion-row>
+<ion-row>	
+  <ion-col>
+   <ion-item>
+    <ion-label class="first"><span>State</span></ion-label>
+    <ion-input type="text" [(ngModel)]="data.address.state" disabled></ion-input>
+  </ion-item>
+</ion-col>
+</ion-row>
+<ion-row>	
+  <ion-col>
+   <ion-item>
+    <ion-label item-start class="first"><span>Zipcode</span></ion-label>
+    <ion-input type="text" [(ngModel)]="data.address.zipcode" disabled></ion-input>
+  </ion-item>
+</ion-col>
+</ion-row>
+
+<ion-item-divider color="light">Brands:</ion-item-divider>
+
+<ion-row>	
+  <ion-col>
+   <ion-item>
+    <div class = "keyword-list" >
+     <ion-row>
+      <div *ngFor="let item of selected" class="selected">
+       <span>{{item}}</span>
+       <button class="removebtn" (click)="remove(item)"><ion-icon name="md-close"></ion-icon></button>
+     </div>
+
+     <div class="select-text" (click)="showModal()">
+       <input type="text" class="brandInput" disabled="true" placeholder="Add brand" [(ngModel)]=query>
+     </div>
+   </ion-row>
+									<!--
+									<ion-list *ngIf="filteredList.length > 0">
+										<ion-item (click)="select(item)" *ngFor="let item of filteredList">
+											<a >{{item}}</a>
+										</ion-item>
+									</ion-list>
+								-->
+							</div>
+						</ion-item>
+					</ion-col>
+				</ion-row>
+
+				<ion-item-divider color="light" class="offerDivider">
+					<ion-row>
+						<ion-col col-6>
+							<span>Current Offers:</span>
+						</ion-col>
+						<ion-col col-6>
+							<button end ion-button block class="addOffer" (click)="addOffer()">
+								Add offer
+							</button>
+						</ion-col>
+					</ion-row>
+				</ion-item-divider>
+
+				<ion-row *ngIf="newOffers.length > 0">
+					<ion-col col-12 *ngIf="data.offers">
+						<ion-item class="offeritem" *ngFor="let item of newOffers; let i = index" [attr.data-index]="i">
+							<span item-start (click)="openOffer(i)">{{item.title}}</span>
+              <button item-end class="removebtn" *ngIf="item.startDate" (click)="removeOffer(i)"><ion-icon name="trash"></ion-icon></button>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-item-group>
+
+<ion-card class="transparent-card">
+	<div *ngIf="showMap" #map1 id="map1" style="height:200px;">
+		
+	</div>
+  <div class="action-buttons">
+    <button class="locUpdateBtn" ion-button (click)="updateLoc()">
+      Update Location
+    </button>
+  </div>
+</ion-card>
+
+</ion-content>
+
+<ion-footer *ngIf="updated" class="footer">
+	<ion-toolbar>
+		<div style="text-align: center;">
+			<ion-buttons>
+				<button ion-button block (click)="UpdateStore()" >
+					Save Changes
+				</button>
+			</ion-buttons> 
+		</div>
+	</ion-toolbar>
+</ion-footer>
+

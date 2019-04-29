@@ -1,0 +1,41 @@
+
+.ios, .md {
+
+
+	storeregister { 
+
+		.first1 {
+			width:30%;
+			white-space: normal!important;
+			text-align: left;
+		}
+
+		.item {
+			background-color: #fff0e6;
+			font-weight: 500;
+			font-size: 1.7rem;
+		}
+
+		.item-divider {
+			background-color: #ffcccc;
+			opacity: 0.7;
+			font-weight: 500;
+			font-size: 2rem;
+		}
+
+		.topItem {
+			z-index: 10;
+		}
+
+		.borderen {
+			background-color: #fff0e6;
+			border-width: 2px;
+			border: solid #ff8533;
+		}
+
+		.spanLabel {
+			color: #4d0000;
+		}
+	
+}
+}

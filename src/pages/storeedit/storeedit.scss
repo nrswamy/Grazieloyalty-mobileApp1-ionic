@@ -1,0 +1,192 @@
+.ios, .md {
+
+	storeedit {
+
+		.inf {
+			color: green;
+			white-space: pre;
+		}		
+
+		.first {
+			width:25%;
+			white-space: pre;
+			color: #990000;
+		}
+
+		.first1 {
+			border: 0;
+			border-width: 0px;
+			color: #990000;
+		}
+
+		.first2 {
+			border: 0;
+			border-width: 0px;
+			color: #990000;
+		}
+
+		.profilepic {
+			max-height: 20rem;
+		}
+
+		.keyword-list {
+			display: block;
+			display: inline-block;
+			width: 100%;
+			box-sizing:border-box;
+			border: 2px solid #ccc;
+			border-radius: 4px;
+		}
+
+		.offer-list {
+			display: block;
+			width: 100%;
+			border: 2px solid #ccc;
+			border-radius: 4px;
+		}
+
+		.selected{
+			border:solid #4CAF50 1px;
+			float:left;
+			margin-left: 2px;
+			padding:2px 5px;
+			background: linear-gradient(to right, #ffe6e6 72%, #ffffff 101%);
+		}
+
+		.offer{
+			float:left; 
+			margin:2px;
+			padding:2px 15px;
+		}
+
+		.fishes
+		{
+			max-width: 100%;
+			max-height: 20rem;
+			margin: auto;
+			padding: 0;
+      position: relative;
+		}
+    
+		.fish
+		{
+			position: absolute;
+			z-index: 2;
+			top: 0px;
+			opacity: 0.8;
+			color: white;
+			background-color: red;
+		}
+
+
+		.imageslider {
+			height: 6rem;
+			width: 8.2rem;
+			padding-right: 0.5rem;
+		}
+
+		.addimage {
+			height: 6rem;
+			opacity: 0.4;
+		}
+
+		.col{
+			margin: auto;
+		}
+
+		ion-row {
+			margin-bottom: 0px;
+			margin-top: 0;
+			padding: 0;
+		}
+
+		.item {
+			padding: 0;
+			margin-left: 2px;
+		}
+
+		.removebtn {
+			background-color: white;
+			color: blue;
+		}
+
+		li {
+			margin-bottom: 3px;
+		}
+
+		.thumbs {
+			float: left;
+			position: relative;
+		}
+
+		.deleteopt {
+			z-index: 2;
+			position: absolute;
+			top: 2.4rem;
+			left:4.5rem;
+			margin: auto;			
+		}
+
+		.thumbdel {
+			opacity: 0.8;
+			color: white;
+			background-color: rgba(85, 0, 0,0.8);
+			padding-left: 10px;
+			padding-right: 8px;
+			height:3rem;
+		}
+
+		.brandInput {
+			padding-left: 10px;
+		}
+
+		.footer {
+			background-color: rgba(255, 128, 128,0.9);
+			margin-top: 2px;
+		}
+
+		.offerDivider {
+			padding: 0;
+			margin: 0;
+			height: 40px;
+		}
+
+		.addOffer {
+			padding: 0;
+			margin: 0;
+			border-radius: 6px;
+			height: 30px;
+			background-color: #ffa64d;
+		}
+
+		#map1 {
+			background: transparent;
+		}
+
+		.item-bold {
+			font-weight: bold;
+		}
+
+		.transparent-card{
+			background-color: transparent;
+      z-index: 40;
+      position: relative;
+		}
+
+		.action-buttons {
+			display: block;
+			position: absolute;
+			top: 5px;
+			right: 5px;
+			z-index: 50;
+			text-align: right;
+
+			button {
+				display: inline-block;
+				margin: 4px;
+				background-color: brown;
+			}
+		}
+
+	}
+}

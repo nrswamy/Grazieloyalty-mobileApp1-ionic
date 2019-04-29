@@ -1,0 +1,242 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Create Offer
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="white">Cancel</span>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col col-lg-6 col-xl-6 col-md-6 col-sm-12 col-xs-12>
+        <ion-segment [(ngModel)]="offerType" color="dark">
+          <ion-segment-button value="regular" class="segment">
+            Regular Offer
+          </ion-segment-button>
+          <ion-segment-button value="giftvoucher" class="segment" >
+            Gift Voucher
+          </ion-segment-button>
+        </ion-segment>
+      </ion-col>
+    </ion-row>
+
+    <ion-row [ngSwitch]="offerType">
+      <ion-col col-lg-6 col-xl-6 col-md-6 col-sm-12 col-xs-12>
+        <ion-row *ngSwitchCase="'regular'">
+          <ion-col>
+            <form [formGroup]="offersForm">
+              <ion-item class="shortitem">
+                <ion-label>Title:*</ion-label>
+                <ion-input class="formstyle" type="text" formControlName="offerString" placeholder="Eg: 5% OFF"> </ion-input>
+              </ion-item>
+
+              <ion-item class="shortitem">
+                <ion-label>Discount(%)*:</ion-label>
+                <ion-input class="formstyle" type="number" formControlName="offerAmount" placeholder="0"> </ion-input><button ion-button item-right class="rwrdbtn" (click)="openHelp('Discount in % on each purchase')"><ion-icon item-right name="help-circle" ></ion-icon></button>
+              </ion-item>
+
+              <ion-item class="shortitem">
+                <ion-label>Loyalty CashBack:</ion-label>
+                <ion-input class="formstyle" type="number" formControlName="cbinrupees" placeholder="0"> </ion-input>
+                <button ion-button item-right class="rwrdbtn" (click)="rewardPopover($event, 1 , 'Pts', '%')">{{rewardtype}} <ion-icon name="arrow-dropdown"></ion-icon></button>
+                <button ion-button item-right class="rwrdbtn" (click)="openHelp('Reward points to be added on successful purchase')"><ion-icon item-right name="help-circle" ></ion-icon></button>
+              </ion-item>
+
+              <ion-item class="shortitem">
+                <ion-label>Minimum bill value:</ion-label>
+                <ion-input class="formstyle" type="number" formControlName="minBillValue" placeholder="0"> </ion-input>
+                <button ion-button item-right class="rwrdbtn" (click)="openHelp('Minimum bill value applicable to get this offer')"><ion-icon item-right name="help-circle" ></ion-icon></button>
+              </ion-item>
+
+              <ion-item>
+                <ion-label stacked>Description:*</ion-label>
+                <ion-textarea class="formstyle" type="text" formControlName="description" placeholder="Eg: Get 5% discount on minimum bill value of Rs 100"  autocorrect="on" autocomplete="on"> </ion-textarea>
+              </ion-item>
+
+              <ion-item class="shortitem">
+                <ion-label>Target Customers:*</ion-label>
+                <ion-select formControlName="targetCustomers" okText="Done">
+                 <ion-option value="0" selected="true">All customers</ion-option>
+                 <ion-option value="3">Gold (most valued customers)</ion-option>
+                 <ion-option value="2" selected="true">Silver (medium valued customers)</ion-option>
+                 <ion-option value="1">Bronze (all other customers)</ion-option>
+               </ion-select>
+             </ion-item>	
+           </form>
+
+           <ion-row>
+            <ion-col col-6>
+              <ion-item class="longtitem">
+                <ion-label floating>Start Date:*</ion-label>
+                <ion-datetime displayFormat="MMM DD,YYYY" min={{minDate}} max={{enddate}} pickerFormat="MMM-DD-YYYY" [(ngModel)]="startdate"></ion-datetime>
+              </ion-item>
+            </ion-col>
+
+            <ion-col col-6>
+              <ion-item class="longtitem">
+                <ion-label floating>Start Time:*</ion-label>
+                <ion-datetime displayFormat="HH:mm" pickerFormat="HH:mm" [(ngModel)]="starttime"></ion-datetime>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col col-6>
+              <ion-item class="longtitem">
+                <ion-label floating>Expiry Date:*</ion-label>
+                <ion-datetime displayFormat="MMM DD,YYYY" min={{startdate}} max="2020" pickerFormat="MMM-DD-YYYY" [(ngModel)]="enddate"></ion-datetime>
+              </ion-item>
+            </ion-col>
+
+            <ion-col col-6>
+              <ion-item class="longtitem">
+                <ion-label floating>Expiry Time:*</ion-label>
+                <ion-datetime displayFormat="HH:mm" pickerFormat="HH:mm" placeholder="End Time:" [(ngModel)]="endtime"></ion-datetime>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+        </ion-col>
+      </ion-row>
+      <ion-row *ngSwitchCase="'giftvoucher'">
+        <ion-col>
+          <form [formGroup]="offersForm">
+            <ion-row>
+              <ion-col>
+                <ion-item class="shortitem">
+                  <ion-label>Title:*</ion-label>
+                  <ion-input class="formstyle" type="text" formControlName="offerString" placeholder="Eg: Rs.100 Voucher"> </ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>						
+            <ion-row>
+              <ion-col>
+                <ion-item class="shortitem">
+                  <ion-label>Gift Voucher Amount:*</ion-label>
+                  <ion-input class="formstyle" type="number" formControlName="offerAmount" placeholder="0"> </ion-input>                    
+                </ion-item>
+              </ion-col>
+            </ion-row>	
+
+            <ion-row>
+              <ion-col>
+                <ion-item class="shortitem">
+                  <ion-label>Description:</ion-label>
+                 <ion-textarea class="formstyle" type="text" formControlName="description" placeholder=""  autocorrect="on" autocomplete="on"> </ion-textarea>                    
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-item class="shortitem">
+                  <ion-label>Minimum bill value:</ion-label>
+                  <ion-input class="formstyle" type="number" formControlName="minBillValue" placeholder="0"> </ion-input>
+                  <button ion-button item-right class="rwrdbtn" (click)="openHelp('Minimum value of the bill required to redeem this voucher.')"><ion-icon item-right name="help-circle" ></ion-icon></button>
+                </ion-item>
+              </ion-col>
+              <ion-col>
+                <ion-item class="shortitem">
+                  <ion-label>Maximum Redeem(%):</ion-label>
+                  <ion-input class="formstyle" type="number" formControlName="maxReddemPercent" placeholder="0"> </ion-input>
+                  <button ion-button item-right class="rwrdbtn" (click)="openHelp('Maximum percentage of bill value that can be redeemed. Eg: If Voucher value is 500 and Bill value is 1000, but you want to give only upto 25% discount i.e., 250 Off for this Bill, this field must contain 25.')"><ion-icon item-right name="help-circle" ></ion-icon></button>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-item class="shortitem">
+                  <ion-label>Loyalty CashBack:</ion-label>
+                  <ion-input class="formstyle" type="number" formControlName="cbinrupees" placeholder="0"> </ion-input>
+                  <button ion-button item-right class="rwrdbtn" (click)="rewardPopover($event, 1 , 'Pts', '%')">{{rewardtype}} <ion-icon name="arrow-dropdown"></ion-icon></button>
+                  <button ion-button item-right class="rwrdbtn" (click)="openHelp('Reward points to be added on successful purchase')"><ion-icon item-right name="help-circle" ></ion-icon></button>
+                </ion-item>
+              </ion-col>
+            </ion-row>            
+
+            <ion-row>
+              <ion-col>
+                <ion-item class="shortitem">
+                  <ion-label>Target Customers:</ion-label>
+                  <ion-select formControlName="targetCustomers" okText="Done">
+                    <ion-option value="0" selected="true">All customers</ion-option>
+                    <ion-option value="1">Gold (most valued customers)</ion-option>
+                    <ion-option value="2">Silver (medium valued customers)</ion-option>
+                    <ion-option value="3">Bronze (return customers)</ion-option>
+                  </ion-select>
+                </ion-item>
+              </ion-col>
+            </ion-row>	
+
+          </form>
+
+          <ion-row>
+            <ion-col col-6>
+              <ion-item class="longtitem">
+                <ion-label floating>Start Date:*</ion-label>
+                <ion-datetime displayFormat="MMM DD,YYYY" min={{minDate}} max={{enddate}} pickerFormat="MMM-DD-YYYY" [(ngModel)]="startdate"></ion-datetime>
+              </ion-item>
+            </ion-col>
+
+            <ion-col col-6>
+              <ion-item class="longtitem">
+                <ion-label floating>Start Time:*</ion-label>
+                <ion-datetime displayFormat="HH:mm" pickerFormat="HH:mm" [(ngModel)]="starttime"></ion-datetime>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col col-6>
+              <ion-item class="longtitem">
+                <ion-label floating>Expiry Date:*</ion-label>
+                <ion-datetime displayFormat="MMM DD,YYYY" min={{startdate}} max="2020" pickerFormat="MMM-DD-YYYY" [(ngModel)]="enddate"></ion-datetime>
+              </ion-item>
+            </ion-col>
+
+            <ion-col col-6>
+              <ion-item class="longtitem">
+                <ion-label floating>Expiry Time:*</ion-label>
+                <ion-datetime displayFormat="HH:mm" pickerFormat="HH:mm" placeholder="End Time:" [(ngModel)]="endtime"></ion-datetime>
+              </ion-item>
+            </ion-col>
+          </ion-row>					
+
+        </ion-col>
+      </ion-row>
+      <p>'*' All fields are compulsory</p>
+    </ion-col>			
+  </ion-row>
+</ion-grid>
+
+</ion-content>
+
+<ion-footer>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-row>
+          <ion-col col-6>
+            <button ion-button block color="danger" (click)="preview()">
+              Preview
+            </button>
+          </ion-col>
+          <ion-col col-6>
+            <button ion-button block color="danger" (click)="saveOffer()">
+              {{addString}}
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>
+

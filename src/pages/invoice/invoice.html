@@ -1,0 +1,161 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="close()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+      Invoice
+    </ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only (click)="print()">
+        <ion-icon name="download" class="printicon"></ion-icon>Save/Print 
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid> 
+    <div id="Html2Pdf">
+      <div *ngIf="store">
+        <span style="font-size: 1.4rem;  font-weight: 600; padding: 0; margin: 0; margin-top: 6px;">{{store.name}}</span><br>
+        <span style="padding: 0; font-size: 1.1rem;">{{store.address.locality}}</span><br>
+        <span style="padding: 0; font-size: 1.1rem;">{{store.address.city}}</span><br>
+        <span style="padding: 0; font-size: 1.1rem;">Ph:</span>
+
+        <div *ngIf="store.contactNumbers.length">
+          <span style="padding: 0; font-size: 1.1rem;" *ngFor="let ph of store.contactNumbers; let in = index">{{ph}} <a *ngIf="in<store.contactNumbers.length-1">/</a> </span>
+        </div>
+      </div>
+      <hr>
+      <div style="display: inline-block; width: 100%;">
+        <span style="float:left">Date: {{details.day}}</span>
+        <span style="float:right">Time: {{details.time}}</span>
+        <br>
+        <span>Invoice #: {{details.invoiceNo}}</span>
+      </div>
+      <hr>
+
+      <div *ngIf="details.billType == 'cart'">
+        <div class="rowc" style="display: inline-block; width: 100%;">
+          <div style="text-align: left; float: left; width: 24%;">
+            <span>Item</span>
+          </div>
+          <div style="text-align: left; float: left; width: 8.2%;">
+            <span>Qty</span>
+          </div>
+          <div style="text-align: right; float: left; width: 24%;">
+            <span>Taxable</span>
+          </div>
+          <div style="text-align: right; float: left; width: 16.6%;">
+            <span>Tax(%)</span>
+          </div>
+          <div style="text-align: right; float: left; width: 24%;">
+            <span>Value</span>
+          </div>
+        </div>
+        <hr>
+        <div style="display: inline-block; width: 100%;" class="rowc" *ngFor="let item of details.cartItems">
+          <div style="text-align: left; float: left; width: 24%;">
+            <span>{{item.itemName}}</span>
+          </div>
+          <div style="text-align: center; float: left; width: 8.2%;">
+            <span>{{item.quantity}}</span>
+          </div>
+          <div style="text-align: right; float: left; width: 24%;">
+            <span>{{item.orgPrice}}</span>
+          </div>
+          <div style="text-align: right; float: left; width: 16.6%;">
+            <span>&nbsp;{{item.GST}}</span>
+          </div>
+          <div style="text-align: right; float: left; width: 24%;">
+            <span>{{item.finalPrice}}</span>
+          </div>      
+        </div>
+      </div>
+      <hr>
+
+      <div class="rowc" *ngIf="details.discount">
+        <div style="text-align: left; float: left; width: 48.4%;">
+          <span class="lgfont">&nbsp;</span>
+        </div>
+        <div style="text-align: right; float: left; width: 48.4%;">
+          <span class="lgfont">{{details.billValue}}</span>
+        </div>
+      </div>
+
+      <div style="display: inline-block; width: 100%;" class="rowc" *ngIf="details.discount">
+        <div style="text-align: left; float: left; width: 48.4%;">
+          <span class="lgfont">Extra Discount</span>
+        </div>
+        <div style="text-align: right; float: left; width: 48.4%;">
+          <span class="lgfont">-{{details.discount}}</span>
+        </div>
+        <br>
+      </div>
+      <hr *ngIf="details.discount">
+
+      <div style="display: inline-block; width: 100%;" class="rowc">
+        <div style="text-align: left; float: left; width: 48.4%;">
+          <span class="lgfont1">Total</span>
+        </div>
+        <div style="text-align: right; float: left; width: 48.4%;">
+          <span class="lgfont1">{{details.billValue - details.discount}}</span>
+        </div>
+      </div>
+
+      <div style="display: inline-block; width: 100%;" class="rowc">
+        <div style="text-align: left; float: left; width: 48.4%;">
+          <span class="lgfont1">Balance Adjusted(Rs)</span>
+        </div>
+        <div style="text-align: right; float: left; width: 48.4%;">
+          <span class="lgfont1">{{details.deductedBalance}}</span>
+        </div>
+      </div>
+
+      <div style="display: inline-block; width: 100%;" class="rowc">
+        <div style="text-align: left; float: left; width: 48.4%;">
+          <span class="lgfont1">Redeemed Reward Pts</span>
+        </div>
+        <div style="text-align: right; float: left; width: 48.4%;">
+          <span class="lgfont1">{{details.deductedRewards}}</span>
+        </div>
+      </div>
+
+      <div style="display: inline-block; width: 100%;" class="rowc">
+        <div style="text-align: left; float: left; width: 48.4%;">
+          <span class="lgfont1">Amount Paid</span>
+        </div>
+        <div style="text-align: right; float: left; width: 48.4%;">
+          <span class="lgfont1">{{details.finalBill}}</span>
+        </div>
+      </div>
+      <hr>
+
+      <div style="display: inline-block; width: 100%;" class="rowc">
+        <div style="text-align: left; float: left; width: 48.4%;">
+          <span class="lgfont1">Rewards Awarded</span>
+        </div>
+        <div style="text-align: right; float: left; width: 48.4%;">
+          <span class="lgfont1">{{details.reward}}</span>
+        </div>
+      </div>
+
+    </div>
+  </ion-grid>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div style="text-align: center; ">
+      <ion-buttons>
+        <button ion-button block (click)="close()">
+          <span>Close</span>
+        </button>
+      </ion-buttons> 
+    </div>
+  </ion-toolbar>
+</ion-footer>

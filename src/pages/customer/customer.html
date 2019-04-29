@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Customer history
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text>Close</span>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-list>    
+    <ion-item style="height:35px; background:transparent; font-size:2rem;">
+      <input id="contactInput" type="tel" style="height:42px; width: 100%; background:rgba(96, 32, 32, 0.1); font-size:1.7rem;" placeholder="Customer Mobile No:" [(ngModel)]=mobile maxlength="10" (keyup)="search()">
+    </ion-item>
+  </ion-list>
+
+  <ion-row>
+    <ion-col col-lg-6 col-xl-6 col-md-6 col-sm-12 col-xs-12>
+      <ion-row *ngIf="items.length" class="item-header">
+        <ion-col col-3 class="item-col">
+          <span>Amount</span>
+        </ion-col>
+        <ion-col col-5 class="item-col">
+          <span>Date of Purchase</span>
+        </ion-col>
+        <ion-col col-4 class="item-col">
+          <span>Store Name</span>
+        </ion-col>
+      </ion-row>
+
+      <ng-container *ngIf="items.length">
+        <ion-item *ngFor="let item of items" no-lines [class.sucitem]="item.transactionType == 'purchase'" [class.ukwnitem]="item.transactionType == 'settle'" (click)="showModal(item)">
+          <ion-row>
+            <ion-col col-3 class="item-col">
+              <span>Rs.{{item.finalBill}}</span>
+            </ion-col>
+            <ion-col col-5 class="item-col">
+              <span>{{item.date}}</span>
+            </ion-col>
+            <ion-col col-4 class="item-col">
+              <span>{{item.storeId.name}}</span>
+            </ion-col>
+          </ion-row>
+        </ion-item>
+      </ng-container>
+    </ion-col>
+  </ion-row>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div style="text-align: center; ">
+      <ion-buttons>
+        <button ion-button block (click)="dismiss()">
+          <span>Close</span>
+        </button>
+      </ion-buttons> 
+    </div>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,72 @@
+storemanager {
+
+  ion-content { background-color: transparent !important; }
+
+  .large {
+    font-size: 35px; //Preferred size here
+  }
+
+  .item {
+    padding-left: 0;
+    margin-bottom: 5px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5); 
+    background-color: transparent;
+  }
+  
+  .nopr {
+    display: inline;
+  }
+
+  img {
+      width: 8rem;    
+      height: 8rem;
+    }
+
+  .title {
+    color: #e60000;
+    display: inline-block;
+    font-weight: 500;
+    font-size: 1.8rem;
+  }
+
+  .subtitle {
+    display: inline-block;
+    font-weight: 400;
+    font-size: 1.5rem;
+  }
+
+  .description {
+    display: inline-block;
+    font-weight: 400;
+    font-size: 1.7rem;
+  }
+
+  ul {
+    padding: 0px;
+    margin-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    display: inline;
+
+    &.rating li {
+      padding: 0px  !important;
+      background: none;
+      color: #ff5050;
+
+
+      ion-icon {
+        font-size: 20px;
+        padding: 0;
+        margin: 0;
+      }
+    }
+  }
+
+  .det {
+  }
+
+  ion-row {
+    padding-top: 0;
+  }
+
+}

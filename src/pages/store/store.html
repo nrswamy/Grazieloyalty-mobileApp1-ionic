@@ -1,0 +1,135 @@
+<ion-header>
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title *ngIf="navData">{{navData.name}}</ion-title>
+		<ion-buttons end>
+			<button ion-button (click)="editStore()">
+				<ion-icon name="create"></ion-icon>Edit
+			</button>
+		</ion-buttons>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+
+	<ion-grid fixed *ngIf="data">
+		<ion-row class="upperrow" textcenter>
+			<ion-col col-6>
+				<button ion-button class="box" outline (click)="addBilling()">
+					<div>
+						<ion-icon md="md-cloud-upload" class="icond"></ion-icon><br>
+						Add Rewards
+					</div>
+				</button>
+			</ion-col>
+			<ion-col col-6>
+				<button ion-button class="box" outline (click)="addCartBill()">
+					<div>
+						<ion-icon md="md-cart" class="icond"></ion-icon><br>
+						Create Bill
+					</div>
+				</button>
+			</ion-col>
+			<ion-col col-6>
+				<button ion-button class="box" outline (click)="viewDashboard()">
+					<div>
+						<ion-icon name="stats" class="icond1"></ion-icon><br>
+						View Dashboard
+					</div>
+				</button>
+			</ion-col>
+			<ion-col col-6>
+				<button ion-button class="box" outline (click)="manageInventory()">
+					<div>
+						<ion-icon name="paper" class="icond1"></ion-icon><br>
+						<span class="mdd">Manage Inventory</span>
+					</div>
+				</button>
+			</ion-col>
+		</ion-row>
+
+		<ion-row no-padding>
+			<ion-col col-12 col-xl-4 col-lg-6 col-md-9 col-sm-12 col-xs-12>	
+				<ion-card no-padding>
+					<div><img class = "profilepic" (click)="viewImage()" src={{imageData.profile}}/></div>
+				</ion-card>
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col col-12 col-xl-4 col-lg-6 col-md-9 col-sm-12 col-xs-12>	
+				<ion-item-divider color="light">Store Info</ion-item-divider>
+			</ion-col>
+		</ion-row>
+
+		<ion-row *ngIf="imageData.images.length > 0">	
+			<ion-slides slidesPerView="4">
+				<ion-slide *ngFor="let pic of imageData.images; let in = index" [attr.data-index]="in" >
+					<img class="imageslider" (click)="viewStoreImage(in)" src="{{pic}}">
+				</ion-slide>
+			</ion-slides>
+		</ion-row>
+
+		<!-- <img id="profile-image" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/94311/me.png"> -->	
+
+		<ion-row>
+			<ion-col col-4 col-xl-1 col-lg-2 col-md-3 col-sm-4 col-xs-4>	
+				<span class="first">Name: </span>
+			</ion-col>
+			<ion-col col-8 col-xl-3 col-lg-4 col-md-6 col-sm-8 col-xs-8>
+				<span class="inf">{{data.name}}</span>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col col-4 col-xl-1 col-lg-2 col-md-3 col-sm-4 col-xs-4>	
+				<span class="first">Description: </span>
+			</ion-col>
+			<ion-col col-8 col-xl-3 col-lg-4 col-md-6 col-sm-8 col-xs-8>
+				<span class="inf">{{data.description}}</span>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col col-4 col-xl-1 col-lg-2 col-md-3 col-sm-4 col-xs-4>
+				<span item-start class="first">Address: </span>
+			</ion-col>
+			<ion-col col-8 col-xl-3 col-lg-4 col-md-6 col-sm-8 col-xs-8>
+				<div>				
+					<span class="inf">{{data.address.locality}}, </span>
+					<span class="inf">{{data.address.city}}, </span>
+					<span class="inf">{{data.address.state}}-{{data.address.zipcode}}</span>
+				</div>
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col col-4 col-xl-1 col-lg-2 col-md-3 col-sm-4 col-xs-4>	
+				<span item-start class="first">Brands: </span>
+			</ion-col>
+			<ion-col col-8 col-xl-3 col-lg-4 col-md-6 col-sm-8 col-xs-8>
+				<a class="inf" *ngFor="let item of data.keywords">{{item}}; </a>
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col col-4 col-xl-1 col-lg-2 col-md-3 col-sm-4 col-xs-4>	
+				<span item-start class="first">Offers: </span>
+			</ion-col>
+			<ion-col col-8 col-xl-3 col-lg-4 col-md-6 col-sm-8 col-xs-8>
+				<div>  
+					<span *ngFor="let item of newOffers" class="inf">- {{item}} <br></span>
+				</div>
+			</ion-col>
+		</ion-row>
+
+    <ion-row>
+      <ion-col col-12 col-xl-4 col-lg-6 col-md-9 col-sm-12 col-xs-12>  
+        <img (click)="viewMapImage()" src={{data.staticmap}}>
+      </ion-col>
+    </ion-row>
+
+	</ion-grid>
+
+</ion-content>
+

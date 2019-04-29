@@ -1,0 +1,72 @@
+.md,.ios {
+  page-invoice {
+
+    ion-content {
+      background-color:white !important;
+      background-image: none;
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    hr {
+      background-color: #fff;
+      border-top: 2px dashed #8c8b8b;
+    }
+
+    .title {
+      font-size: 1.6rem;  font-weight: 600; padding: 0; margin: 0; margin-top: 6px;
+    }
+
+    .subtitle {
+      padding: 0; margin-top: -15px; font-size: 1.4rem;
+    }
+
+    .subsubtitle50 {
+      font-size: 1rem;
+      margin-top: -5px !important;
+      margin: 3px;
+    }
+
+    .subsubtitle80 {
+      font-size: 1.2rem;
+      margin-top: -5px !important;
+      margin: 3px;
+    }
+
+    .subsubtitle1 {
+      font-size: 1.5rem;
+      margin-top: -5px !important;
+      margin-bottom: -5px !important;
+      margin: 3px;
+    }
+
+    .dateitem {
+      max-height: 15px !important;
+      margin-bottom: 0;
+      margin-top: 0;
+    }
+
+    .item-span {
+      margin-top: -5px !important;
+      padding-top: 5px !important;
+    }
+
+    .rowc:after {
+      content: ""; display: table; clear: both;
+    }
+
+    .foottool {
+      padding: 0 !important;
+      height: 30px;
+
+      button {
+        background-color: transparent;
+        border: none;
+      }
+    }
+
+  }
+
+}

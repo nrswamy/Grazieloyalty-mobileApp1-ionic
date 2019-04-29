@@ -1,0 +1,123 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons left>
+        <button ion-button icon-only (click)="viewCtrl.dismiss()">
+            <ion-icon name="arrow-back"></ion-icon>
+        </button>
+    </ion-buttons>
+    <ion-title>
+      Recharge
+    </ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="viewType">
+      <ion-segment-button value="packages" (click)="loadPackages()">
+        Validity Packs
+      </ion-segment-button>
+      <ion-segment-button value="topup" (click)="loadTopups()">
+        Top-up
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ <ion-grid *ngIf="!viewTopup">
+
+  <ion-row  *ngFor = "let pack of packDetails">
+    <ion-col>
+      <ion-item class="packheading" (click)="pack.showDetails = !pack.showDetails;">
+        <ion-row>
+          <ion-col col-7>
+            <span item-start>{{pack.packName}}</span>
+          </ion-col>
+          <ion-col col-5>
+            <span item-end>
+              <span class="strike" *ngIf="pack.offerExist">Rs.{{pack.packPrice}}</span>Rs.{{pack.newPrice}}/mo<br>
+              <span *ngIf="pack.offerExist" class="offerspan">{{pack.percent}}% Off</span>
+            </span>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+      <ng-container *ngIf="pack.showDetails">
+        <ion-item class="itemdetail">
+          <ion-label>Price : {{pack.packPrice}}</ion-label>
+        </ion-item>
+        <!--
+        <ion-item class="itemdetail" *ngIf="pack.packDetails.direct_billing == 'Unlimited'">
+          <ion-label>Direct Billings : {{pack.packDetails.direct_billing}}</ion-label>
+        </ion-item>
+        <ion-item class="itemdetail" *ngIf="pack.packDetails.cart_billing == 'Unlimited'">
+          <ion-label>Cart Billings : {{pack.packDetails.cart_billing}}</ion-label>
+        </ion-item>
+      -->
+      <ion-item class="itemdetail">
+        <ion-label>Store Entries : {{pack.storesAllowed}}</ion-label>
+      </ion-item>
+      <ion-item class="itemdetail">
+        <ion-label>Customer Entries : {{pack.packDetails.customer_entries}}</ion-label>
+      </ion-item>
+      <ion-item class="itemdetail">
+        <ion-label>Cart Entries : {{pack.packDetails.cart_entries}}</ion-label>
+      </ion-item>
+      <ion-item class="itemdetail">
+        <ion-label>Free Credits : {{pack.packDetails.free_credits}}</ion-label>
+      </ion-item>
+      <ion-item class="itemdetail" text-wrap>
+        <ion-label>Publish Offers to customers: {{pack.packDetails.offers}} </ion-label>
+      </ion-item>
+      <ion-item class="itemdetail" text-wrap>
+        <span>Credits charged per billing : </span> <p>{{pack.packDetails. price_per_txn}}</p>
+      </ion-item>
+      <ion-item class="itemdetail" *ngIf="pack.packPrice">
+        <button item-center class="paybutton" ion-button (click)="choosePlan(pack)">Pay</button>
+      </ion-item>
+    </ng-container>
+  </ion-col>
+</ion-row>
+</ion-grid>
+<ion-grid *ngIf="viewTopup">
+ <ion-row>
+  <ion-col col-lg-6 col-xl-6 col-md-6 col-sm-12 col-xs-12 class="item-col">
+    <ion-row *ngIf="topUps" class="item-header">
+      <ion-col col-3 class="item-col">
+        <span>Amount</span>
+      </ion-col>
+      <ion-col col-5 class="item-col">
+        <span>Credits</span>
+      </ion-col>
+      <ion-col col-4 class="item-col">
+        <span>Payable</span>
+      </ion-col>
+    </ion-row>
+
+    <ion-item *ngFor="let top of topUps" class="topup-item" (click)="payTopup(top)">
+      <ion-row>
+        <ion-col col-3 class="item-col">
+          <span>{{top.value}}</span>
+        </ion-col>
+        <ion-col col-4 class="item-col">
+          <span>{{top.points}}</span>
+        </ion-col>
+        <ion-col col-5 class="item-col">
+          <span>Rs.{{top.final}}</span><br>
+          <span *ngIf="top.isTax">+ {{top.tax}}% Tax</span>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+  </ion-col>
+</ion-row>
+</ion-grid>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div style="text-align: center; ">
+      <ion-buttons>
+        <button ion-button block (click)="close()">
+          <span>Close</span>
+        </button>
+      </ion-buttons> 
+    </div>
+  </ion-toolbar>
+</ion-footer>

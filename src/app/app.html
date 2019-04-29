@@ -1,0 +1,27 @@
+<ion-menu [content]="content">
+  <ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="arrow-back"></ion-icon>
+    </button>
+    <ion-title>Menu</ion-title>
+  </ion-navbar>
+</ion-header>
+
+  <ion-content>
+    <ion-list>
+      <ng-container *ngFor="let p of localStorage.pages">
+      <button class="btn" menuClose ion-item *ngIf="p.visible" (click)="openPage(p)">
+        {{p.title}}
+      </button>
+    </ng-container>
+      <button class="btn" menuClose ion-item (click)="Logout()">
+        Logout
+      </button>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
